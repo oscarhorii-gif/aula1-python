@@ -1,9 +1,5 @@
 from datetime import datetime
 
-def obter_dados_usuario():
-    nome = input("Digite seu nome: ")
-    cidade = input("Digite sua cidade: ")
-    return nome, cidade
 
 def obter_idade():
     ano_atual = datetime.now().year
@@ -22,6 +18,7 @@ def obter_idade():
         except ValueError:
             print("Digite um número válido!")
 
+
 def classificar_idade(idade):
     if idade < 18:
         return "menor de idade"
@@ -30,11 +27,28 @@ def classificar_idade(idade):
     else:
         return "idoso"
 
-# execução principal
-nome, cidade = obter_dados_usuario()
-idade = obter_idade()
-categoria = classificar_idade(idade)
 
-print(f"\nOlá {nome} de {cidade}")
-print(f"Você tem {idade} anos")
-print(f"Você é {categoria}")
+while True:
+    print("\n=== MENU ===")
+    print("1 - Informar dados")
+    print("2 - Sair")
+
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        nome = input("Digite seu nome: ")
+        cidade = input("Digite sua cidade: ")
+
+        idade = obter_idade()
+        categoria = classificar_idade(idade)
+
+        print(f"\nOlá {nome} de {cidade}")
+        print(f"Você tem {idade} anos")
+        print(f"Você é {categoria}")
+
+    elif opcao == "2":
+        print("Programa encerrado.")
+        break
+
+    else:
+        print("Opção inválida. Tente novamente.")
